@@ -1,25 +1,37 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <script src="../build/react.js"></script>
     <script src="../build/react-dom.js"></script>
     <script src="../build/browser.min.js"></script>
-  </head>
-  <body>
-    <div id="example"></div>
-    <script type="text/babel">
-      var names = ['Alice', 'Emily', 'Kate'];
+</head>
+<body>
+<div id="example"></div>
+<div id="example1"></div>
+<script type="text/babel">
+    var names = ['Alice', 'Emily', 'Kate'];
+    var el = [
+        <p>Hello Alice</p>,
+        <p>Hello Emily</p>,
+        <p>Hello Eate</p>,
+    ];
 
-      ReactDOM.render(
+    /*
+    * 直接用{}引用一个数组会将数组中的元素全部打印出来
+    * */
+    ReactDOM.render(
         <div>
-        {
-          names.map(function (name, index) {
-            return <div key={index}>Hello, {name}!</div>
-          })
-        }
+            <p>{names}</p>
         </div>,
         document.getElementById('example')
-      );
-    </script>
-  </body>
+    );
+
+    ReactDOM.render(
+        <div>
+            <p>{el}</p>
+        </div>,
+        document.getElementById('example1')
+    );
+</script>
+</body>
 </html>

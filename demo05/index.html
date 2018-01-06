@@ -13,8 +13,9 @@
           return (
             <ol>
               {
+                  // this.props.children
                 React.Children.map(this.props.children, function (child) {
-                  return <li>{child}</li>;
+                  return <p>{child}</p>;
                 })
               }
             </ol>
@@ -22,6 +23,10 @@
         }
       });
 
+      /*
+      * ReactDOM.render第一个参数可以是标签结构也可以是已经声明好的组件
+      * 在这里NotesList是一个刚刚创建的组件
+      * */
       ReactDOM.render(
         <NotesList>
           <span>hello</span>
