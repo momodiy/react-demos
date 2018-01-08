@@ -8,8 +8,10 @@
   </head>
   <body>
     <div id="example"></div>
+    <p source="https://api.github.com/users/octocat/gists">555555</p>
     <script type="text/babel">
 var UserGist = React.createClass({
+    // 初始化组件
   getInitialState: function() {
     return {
       username: '',
@@ -18,15 +20,21 @@ var UserGist = React.createClass({
   },
 
   componentDidMount: function() {
+      //使用jquery的get请求，请求地址为组件的source属性的值
     $.get(this.props.source, function(result) {
-      var lastGist = result[0];
-      if (this.isMounted()) {
-        this.setState({
+        console.log(result);
+        var index=~~(Math.random()*result.length);
+        console.log(index);
+        var lastGist = result[index];
+        console.log(this);
+        if (this.isMounted()) {
+            console.log(lastGist);
+            this.setState({
           username: lastGist.owner.login,
           lastGistUrl: lastGist.html_url
         });
       }
-    }.bind(this));
+    }.bind(this)); //在get请其中使用bind绑定作用域，绑定的作用域为全局
   },
 
   render: function() {
@@ -38,6 +46,7 @@ var UserGist = React.createClass({
   }
 });
 
+// souces属性用于存储请求的API地址
 ReactDOM.render(
   <UserGist source="https://api.github.com/users/octocat/gists" />,
   document.getElementById('example')

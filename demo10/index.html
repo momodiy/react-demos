@@ -8,7 +8,12 @@
   <body>
     <div id="example"></div>
     <script type="text/babel">
+      /*
+      * this.state一般用于可能发生变化的属性
+      * this.props一般用于不会发生变化的属性
+      * */
       var Hello = React.createClass({
+          //初始化组件的透明度为1.0
         getInitialState: function () {
           return {
             opacity: 1.0
@@ -16,7 +21,13 @@
         },
 
         componentDidMount: function () {
-          this.timer = setInterval(function () {
+            console.log(this);
+            /*
+            * 使用setInterval完成透明度的自减 循环
+            * 将改变后的opacity值应用于组件样式
+            * 100ms改变一次，性能较低
+            * */
+            this.timer = setInterval(function () {
             var opacity = this.state.opacity;
             opacity -= .05;
             if (opacity < 0.1) {
@@ -25,6 +36,7 @@
             this.setState({
               opacity: opacity
             });
+              // console.log(this);
           }.bind(this), 100);
         },
 
@@ -44,3 +56,6 @@
     </script>
   </body>
 </html>
+
+
+

@@ -13,9 +13,12 @@ var LikeButton = React.createClass({
     return {liked: false};
   },
   handleClick: function(event) {
-    this.setState({liked: !this.state.liked});
+      console.log(event.type);
+      console.log(event);
+      this.setState({liked: !this.state.liked});
   },
   render: function() {
+      //每次点击触发state状态改变，从而触发render函数 重新渲染组件
     var text = this.state.liked ? 'like' : 'haven\'t liked';
     return (
       <p onClick={this.handleClick}>

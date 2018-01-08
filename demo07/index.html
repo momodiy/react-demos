@@ -11,11 +11,16 @@
 var MyComponent = React.createClass({
   handleClick: function() {
     this.refs.myTextInput.focus();
-  },
+      console.log(this.refs.myTextInput);
+   },
+  //  匹配到多个元素对象时取最后一个
+  //onClick为react的内置方法
   render: function() {
     return (
       <div>
-        <input type="text" ref="myTextInput" />
+        <input type="text" ref="myTextInput" placeholder="001" /><br/>
+        <input type="text" ref="myTextInput" placeholder="002" /><br/>
+        <input type="text" ref="myTextInput" placeholder="003" />
         <input type="button" value="Focus the text input" onClick={this.handleClick} />
       </div>
     );

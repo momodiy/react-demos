@@ -13,7 +13,9 @@
           return {value: 'Hello!'};
         },
         handleChange: function(event) {
-          this.setState({value: event.target.value});
+            console.log(event.target);
+            console.log(event.target.value);
+            this.setState({value: event.target.value});
         },
         render: function () {
           var value = this.state.value;
